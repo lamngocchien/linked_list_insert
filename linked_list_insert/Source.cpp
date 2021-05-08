@@ -13,6 +13,21 @@ public:
 to the head of a list and an int, inserts
 a new node on the front of the list. */
 
+void deleteList(Node* (*head)) {
+
+    Node* current = *head;
+    Node* next = NULL;
+    while (current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    *head = NULL;
+
+}
+
 void push (Node *(*head), int new_data){
     Node* new_node = new Node;
     new_node->data = new_data;
@@ -159,6 +174,8 @@ int main()
     deleteNodex(&head, 8);
     printList(head);
 
+    deleteList(&head);
+    printList(head);
 
 
     return 0;
